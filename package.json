@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.2.0",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@types/react-datepicker": "^4.15.0",
+    "prisma": "^5.2.0",
     "react-datepicker": "^4.16.0"
   }
 }
