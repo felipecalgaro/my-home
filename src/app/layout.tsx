@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-x-hidden`}>
         <header className='flex flex-col gap-y-8 justify-center items-center py-6'>
           <Image src='/logo.svg' alt='My Home logo' width={250} height={250} />
           <hr className='w-2/3' />
