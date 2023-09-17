@@ -2,6 +2,7 @@ import { Card } from '@/components/Card';
 import { DateInput } from '@/components/DateInput';
 import { IconLabel } from '@/components/IconLabel';
 import { PaginationButton } from '@/components/PaginationButton';
+import { TextInput } from '@/components/TextInput';
 import { getHomesByAvailabilityService } from '@/services/getHomesByAvailabilityService';
 import Image from 'next/image';
 
@@ -16,9 +17,9 @@ export default async function Homes() {
       <form className='flex justify-evenly items-center flex-wrap gap-x-12 gap-y-10 mt-10'>
         <section className='flex justify-center items-center'>
           <IconLabel htmlFor='location'>
-            <Image src='/pin.svg' alt='Pin Icon' width={28} height={28} />
+            <Image src='/pin.svg' alt='Pin Icon' width={20} height={20} />
           </IconLabel>
-          <input placeholder='Ex.: "Salvador, Bahia"' type="text" name="place" id="place" className='bg-[#D9D9D9] rounded-3xl rounded-l-none xs:text-xl text-lg h-12 pl-2 xs:w-96 w-52 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray' />
+          <TextInput placeholder='Ex.: "Salvador, Bahia"' name="place" id="place" />
         </section>
         <section className='flex justify-center items-center'>
           <IconLabel htmlFor='checkIn'>
@@ -37,8 +38,6 @@ export default async function Homes() {
           <Card id={home.id} availableFrom={home.availableFrom!} availableUntil={home.availableUntil!} imageUrl={home.image_url} location={home.location} price={home.price} key={home.id} />
         ))}
       </section>
-      <Image src='/blob.svg' alt='Blob' width={500} height={200} style={{ position: 'absolute', top: '43vh', left: '84%', transform: 'rotate(-10deg)' }} />
-      <Image className='xl:top-[82vh] lg:top-[140vh] lg:left-[-11%] left-[-20%] md:top-[174vh] sm:top-[210vh] xs:top-[250vh] top-[290vh]' src='/blob.svg' alt='Blob' width={400} height={200} style={{ position: 'absolute' }} />
       <section className='flex justify-center items-center mb-10 gap-x-8'>
         <PaginationButton iconUrl='/previous.svg' />
         <PaginationButton iconUrl='/next.svg' />
