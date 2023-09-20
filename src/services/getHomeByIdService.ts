@@ -1,6 +1,6 @@
 import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeRepository";
 import { Home } from "@/entities/Home";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 interface GetHomeByIdRequest {
   id: string;
@@ -15,6 +15,10 @@ export async function getHomeByIdService(
   const prismaHomeRepository = new PrismaHomeRepository(prisma);
 
   const home = await prismaHomeRepository.getHomeById(id);
+
+  if (!home) {
+    throw new Error("Error while fetching a home.");
+  }
 
   return home;
 }

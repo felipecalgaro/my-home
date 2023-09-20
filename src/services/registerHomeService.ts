@@ -1,6 +1,6 @@
 import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeRepository";
 import { Home } from "@/entities/Home";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 interface RegisterHomeServiceRequest {
   location: [string, string];

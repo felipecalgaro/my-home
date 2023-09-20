@@ -1,5 +1,5 @@
 import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeRepository";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 interface UnregisterHomeRequest {
   id: string;
