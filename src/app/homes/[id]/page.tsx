@@ -1,6 +1,6 @@
 import { HomeDetail } from '@/components/HomeDetail'
 import { IconLabel } from '@/components/IconLabel'
-import { TextInput } from '@/components/TextInput'
+import { LocationInput } from '@/components/LocationInput'
 import { getHomeByIdService } from '@/services/getHomeByIdService'
 import formatDate from '@/utils/formatDate'
 import formatLocation from '@/utils/formatLocation'
@@ -49,7 +49,7 @@ export default async function Home({ params }: HomeProps) {
               <IconLabel htmlFor='email'>
                 <Image src='/email.svg' alt='email-icon' width={24} height={24} />
               </IconLabel>
-              <TextInput placeholder='Digite seu email' name='email' id='email' />
+              <LocationInput placeholder='Digite seu email' name='email' id='email' />
             </div>
           </div>
           <div className='flex flex-col justify-center items-start gap-2 w-full'>
