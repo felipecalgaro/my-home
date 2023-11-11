@@ -14,7 +14,7 @@ export function PriceInputButtons() {
   }
 
   return (
-    <div className='text-3xl flex justify-center items-center bg-[#D9D9D9] border-[#c8c8c8] border border-l-0 drop-shadow-md rounded-xl rounded-l-none h-12 peer-focus:outline-none peer-focus:ring-1 peer-focus:ring-slate-500 font-extralight select-none'>
+    <div className='text-3xl flex justify-center items-center bg-[#D9D9D9] border-[#c8c8c8] border border-l-0 drop-shadow-sm rounded-xl rounded-l-none h-12 peer-focus:outline-none peer-focus:ring-1 peer-focus:ring-slate-500 font-extralight select-none'>
       <span onClick={() => updateParams('increment')} className='cursor-pointer font-light w-full px-4'>+</span>
       <hr className='w-px h-3/4 bg-[#9f9f9f]' />
       <span onClick={() => updateParams('decrement')} className='cursor-pointer text-4xl w-full px-4'>-</span>
