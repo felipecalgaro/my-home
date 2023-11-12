@@ -7,7 +7,7 @@ interface InputProps {
   id: string
   className?: string
   placeholder: string
-  label: string
+  label?: string
   children?: ReactNode
   defaultValue?: string
 }

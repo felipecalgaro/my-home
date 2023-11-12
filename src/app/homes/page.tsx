@@ -1,9 +1,8 @@
 import { DateInput } from '@/components/DateInput';
 import { HomesSection } from '@/components/HomesSection';
 import { IconLabel } from '@/components/IconLabel';
-import { TextInput } from '@/components/TextInput';
+import { LocationInput } from '@/components/LocationInput';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export type SearchParams = {
   [key: string]: string | undefined
@@ -30,12 +29,12 @@ export default function Homes({ searchParams }: HomesProps) {
           <IconLabel htmlFor='location'>
             <Image src='/pin.svg' alt='Pin Icon' width={20} height={20} />
           </IconLabel>
-          <TextInput placeholder='Ex.: "Salvador" ou "Bahia"' name="location" id="location" />
+          <LocationInput placeholder='Ex.: "Salvador" ou "Bahia"' name="location" id="location" />
         </section>
-        <Link href={``} type='submit' className='bg-custom-black px-12 py-2 xs:text-lg text-base text-white rounded-xl flex justify-center items-center gap-x-2 active:scale-95 transition-transform duration-200 cursor-pointer'>
+        <button type='submit' className='bg-custom-black px-12 py-2 xs:text-lg text-base text-white rounded-xl flex justify-center items-center gap-x-2 active:scale-95 transition-transform duration-200 cursor-pointer'>
           Search
           <Image src='/search.svg' alt='Search Icon' width={20} height={20} />
-        </Link>
+        </button>
       </form>
       <HomesSection filter={{
         availableFrom: checkIn ? new Date(checkIn) : new Date(),

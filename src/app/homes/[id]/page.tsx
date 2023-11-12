@@ -1,6 +1,6 @@
 import { HomeDetail } from '@/components/HomeDetail'
 import { IconLabel } from '@/components/IconLabel'
-import { LocationInput } from '@/components/LocationInput'
+import { Input } from '@/components/Input'
 import { getHomeByIdService } from '@/services/getHomeByIdService'
 import formatDate from '@/utils/formatDate'
 import formatLocation from '@/utils/formatLocation'
@@ -43,13 +43,13 @@ export default async function Home({ params }: HomeProps) {
       <section className='flex justify-center items-center w-full lg:gap-x-64 gap-x-24 flex-wrap'>
         <form className='flex flex-col justify-center items-start gap-12'>
           <h1 className='text-4xl font-medium'>Contate o proprietário</h1>
-          <div className='flex flex-col justify-center items-start gap-2'>
+          <div className='flex flex-col justify-center items-start gap-2 w-full'>
             <label className='ml-2 text-xl font-medium' htmlFor="email">Email</label>
-            <div className='flex justify-center items-center'>
+            <div className='flex justify-center items-center w-full'>
               <IconLabel htmlFor='email'>
                 <Image src='/email.svg' alt='email-icon' width={24} height={24} />
               </IconLabel>
-              <LocationInput placeholder='Digite seu email' name='email' id='email' />
+              <Input placeholder='Digite seu email' name='email' id='email' className='rounded-l-none rounded-r-3xl' />
             </div>
           </div>
           <div className='flex flex-col justify-center items-start gap-2 w-full'>
