@@ -1,3 +1,4 @@
+import { EdgeStoreProvider } from '@/lib/edgestore'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -21,7 +22,7 @@ export default function RootLayout({
           <Image src='/logo.svg' alt='My Home logo' width={250} height={250} priority={true} />
           <hr className='w-2/3' />
         </header>
-        {children}
+        <EdgeStoreProvider>{children}</EdgeStoreProvider>
       </body>
     </html>
   )
