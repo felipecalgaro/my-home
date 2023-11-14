@@ -1,12 +1,9 @@
 import { Home } from "@/entities/Home";
 
 export interface IHomeRepository {
-  getHomesByAvailability(
-    availableFrom: Date,
-    availableUntil: Date
-  ): Promise<Home[]>;
-  registerHome(home: Home): Promise<Home>; // mudar p void dps
-  getHomeById(id: string): Promise<Home>;
+  getHomes(): Promise<Home[]>;
+  registerHome(home: Home): Promise<void>;
+  getHomeById(id: string): Promise<Home | null>;
   updateAvailability(
     id: string,
     availableFrom: Date,
