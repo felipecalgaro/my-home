@@ -54,7 +54,7 @@ export default async function Home({ params }: HomeProps) {
           </div>
           <div className='flex flex-col justify-center items-start gap-2 w-full'>
             <label className='ml-2 text-xl font-medium' htmlFor="message">Mensagem</label>
-            <textarea name='message' id='message' rows={8} placeholder='Digite a mensagem' className='bg-[#D9D9D9] border-[#c8c8c8] border drop-shadow-sm rounded-3xl xs:text-xl text-lg p-4 xs:w-full w-64 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray'></textarea>
+            <textarea name='message' id='message' rows={8} placeholder='Digite a mensagem' className='bg-[#D9D9D9] focus:bg-[#e1e1e1] border-[#c8c8c8] border drop-shadow-sm rounded-3xl xs:text-xl text-lg p-4 xs:w-full w-64 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray'></textarea>
           </div>
           <button className='hover:bg-custom-black border border-custom-black px-12 py-1.5 xs:text-lg text-base text-custom-black hover:text-white rounded-xl flex justify-center items-center gap-x-2 active:scale-95 transition-all duration-200'>Enviar</button>
         </form>
