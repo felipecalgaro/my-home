@@ -41,7 +41,7 @@ export function ImageDropzone({ handleSubmit }: ImageDropzoneProps) {
 
   return (
     <>
-      <div className='bg-stone-50 rounded-xl h-96 w-full flex justify-center items-center flex-wrap'>
+      <div className='bg-stone-100/75 rounded-xl h-96 w-full flex justify-center items-center flex-wrap'>
         <div className={twMerge('h-3/4 w-3/4 flex justify-center items-center cursor-pointer', !preview ? 'border-dashed border-2 border-slate-300 rounded-xl' : null)} {...getRootProps()}>
           <input name='image' {...getInputProps()} />
           {
