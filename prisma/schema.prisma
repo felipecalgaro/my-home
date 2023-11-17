@@ -11,12 +11,19 @@ datasource db {
 }
 
 model Home {
-  id             String    @id @default(uuid())
-  registeredAt   DateTime  @default(now())
-  location       String[]
-  availableFrom  DateTime?
-  availableUntil DateTime?
-  price          Float
-  image_url      String
-  ownerEmail     String
+  id           String        @id @default(uuid())
+  registeredAt DateTime      @default(now())
+  location     String[]
+  reservation  Reservation[]
+  price        Float
+  image_url    String
+  ownerEmail   String
+}
+
+model Reservation {
+  id     String   @id @default(uuid())
+  home   Home     @relation(fields: [homeId], references: [id])
+  homeId String
+  from   DateTime
+  until  DateTime
 }
