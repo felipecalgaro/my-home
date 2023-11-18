@@ -14,7 +14,7 @@ model Home {
   id           String        @id @default(uuid())
   registeredAt DateTime      @default(now())
   location     String[]
-  reservation  Reservation[]
+  reservations Reservation[]
   price        Float
   image_url    String
   ownerEmail   String
