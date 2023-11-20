@@ -16,13 +16,12 @@ export async function registerHomeService(
 ): RegisterHomeServiceResponse {
   const prismaHomeRepository = new PrismaHomeRepository(prisma);
   const home = new Home({
-    availableFrom: null,
-    availableUntil: null,
     image_url: request.image_url ?? "https://fakeurl.com.br",
     location: request.location,
     ownerEmail: request.ownerEmail,
     price: request.price,
     registeredAt: new Date(),
+    reservations: [],
   });
 
   await prismaHomeRepository.registerHome(home);
