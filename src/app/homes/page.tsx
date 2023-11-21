@@ -1,4 +1,3 @@
-import { DateInput } from '@/components/DateInput';
 import { HomesSection } from '@/components/HomesSection';
 import { IconLabel } from '@/components/IconLabel';
 import { LocationInput } from '@/components/LocationInput';
@@ -13,18 +12,11 @@ interface HomesProps {
 }
 
 export default function Homes({ searchParams }: HomesProps) {
-  const { checkIn, checkOut, location } = searchParams
+  const { location } = searchParams
 
   return (
     <main className='px-4'>
       <form className='flex justify-evenly items-center flex-wrap gap-x-12 gap-y-10 mt-10'>
-        <section className='flex justify-center items-center'>
-          <IconLabel htmlFor='checkIn'>
-            <Image src='/calendar.svg' alt='Calendar Icon' width={24} height={24} />
-          </IconLabel>
-          <DateInput placeholderText='Check-in' id='checkIn' name='checkIn' />
-          <DateInput className='ml-0.5 rounded-r-3xl' id='checkOut' placeholderText='Check-out' name='checkOut' />
-        </section>
         <section className='flex justify-center items-center'>
           <IconLabel htmlFor='location'>
             <Image src='/pin.svg' alt='Pin Icon' width={20} height={20} />
@@ -37,8 +29,6 @@ export default function Homes({ searchParams }: HomesProps) {
         </button>
       </form>
       <HomesSection filter={{
-        availableFrom: checkIn ? new Date(checkIn) : new Date(),
-        availableUntil: checkOut ? new Date(checkOut) : new Date(),
         location: location || null
       }} />
     </main>
