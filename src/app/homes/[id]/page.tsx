@@ -2,7 +2,6 @@ import { HomeDetail } from '@/components/HomeDetail'
 import { IconLabel } from '@/components/IconLabel'
 import { Input } from '@/components/Input'
 import { getHomeByIdService } from '@/services/getHomeByIdService'
-import formatDate from '@/utils/formatDate'
 import formatLocation from '@/utils/formatLocation'
 import formatPrice from '@/utils/formatPrice'
 import Image from 'next/image'
@@ -28,7 +27,7 @@ export default async function Home({ params }: HomeProps) {
           </HomeDetail>
           <HomeDetail>
             <Image src='/calendar.svg' alt='calendar-icon' width={24} height={24} />
-            <h1 className='text-lg text-[#666666]'>{`${formatDate(home.availableFrom!, 'pt', true)} - ${formatDate(home.availableUntil!, 'pt', true)}`}</h1>
+            <h1 className='text-xl font-semibold'>{home.isAvailable ? 'Disponível' : 'Não disponível'}</h1>
           </HomeDetail>
           <HomeDetail>
             <Image src='/tags.svg' alt='tags-icon' width={24} height={24} />
