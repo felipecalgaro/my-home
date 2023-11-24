@@ -1,12 +1,11 @@
-import { Home, Location } from "@/entities/Home";
+import { Home, Location, Reservation } from "@/entities/Home";
 import { Mapper } from "./Mapper";
 
 interface DatabaseHome {
   id: string;
   registeredAt: Date;
   location: string[];
-  availableFrom: Date | null;
-  availableUntil: Date | null;
+  reservations: (Reservation & { homeId: string })[];
   price: number;
   image_url: string;
   ownerEmail: string;
@@ -16,8 +15,7 @@ const HomeMapper: Mapper<DatabaseHome, Home> = {
   toDomain(home: DatabaseHome) {
     return new Home(
       {
-        availableFrom: home.availableFrom,
-        availableUntil: home.availableUntil,
+        reservations: home.reservations,
         location: home.location as Location,
         ownerEmail: home.ownerEmail,
         price: home.price,
@@ -30,8 +28,14 @@ const HomeMapper: Mapper<DatabaseHome, Home> = {
 
   toDatabase(home: Home): DatabaseHome {
     return {
-      availableFrom: home.availableFrom,
-      availableUntil: home.availableUntil,
+      reservations:
+        home.reservations?.map((reservation) => {
+          return {
+            from: reservation.from,
+            homeId: home.id,
+            until: reservation.until,
+          };
+        }) ?? [],
       id: home.id,
       image_url: home.image_url,
       location: home.location,
