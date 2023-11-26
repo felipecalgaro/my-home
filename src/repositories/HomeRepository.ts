@@ -1,13 +1,10 @@
 import { Home } from "@/entities/Home";
+import { Reservation } from "@prisma/client";
 
 export interface IHomeRepository {
   getHomes(): Promise<Home[]>;
   registerHome(home: Home): Promise<void>;
   getHomeById(id: string): Promise<Home | null>;
-  updateAvailability(
-    id: string,
-    availableFrom: Date,
-    availableUntil: Date
-  ): Promise<void>;
+  bookReservation(newReservation: Reservation, homeId: string): Promise<void>;
   unregisterHome(id: string): Promise<void>;
 }
