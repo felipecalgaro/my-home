@@ -5,8 +5,6 @@ import { PaginationButton } from './PaginationButton';
 
 interface HomesSectionProps {
   filter: {
-    availableFrom: Date
-    availableUntil: Date
     location: string | null
   }
 }
@@ -27,7 +25,7 @@ export async function HomesSection({ filter }: HomesSectionProps) {
   }
 
   const filteredHomes = homes.filter(home => {
-    return home.availableFrom! <= filter.availableFrom && home.availableUntil! >= filter.availableUntil && filterByLocation(home.location)
+    return filterByLocation(home.location)
   })
 
   return (
@@ -36,7 +34,7 @@ export async function HomesSection({ filter }: HomesSectionProps) {
         <>
           <section className='py-20 md:px-16 px-4 px flex justify-center items-start flex-wrap gap-x-10 gap-y-20'>
             {filteredHomes.map((home) => (
-              <Card id={home.id} availableFrom={home.availableFrom!} availableUntil={home.availableUntil!} imageUrl={home.image_url} location={home.location} price={home.price} key={home.id} />
+              <Card id={home.id} isAvailable={home.isAvailable} imageUrl={home.image_url} location={home.location} price={home.price} key={home.id} />
             ))}
           </section>
           <section className='flex justify-center items-center mb-10 gap-x-8'>
