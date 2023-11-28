@@ -1,6 +1,8 @@
 import { HomeDetail } from '@/components/HomeDetail'
 import { IconLabel } from '@/components/IconLabel'
 import { Input } from '@/components/Input'
+import { ReservationForm } from '@/components/ReservationForm'
+import { bookReservationService } from '@/services/bookReservation'
 import { getHomeByIdService } from '@/services/getHomeByIdService'
 import formatLocation from '@/utils/formatLocation'
 import formatPrice from '@/utils/formatPrice'
@@ -9,19 +11,29 @@ import Image from 'next/image'
 interface HomeProps {
   params: {
     id: string
+  },
+  searchParams: {
+    start: string
+    end: string
   }
 }
 
-export default async function Home({ params }: HomeProps) {
+export default async function Home({ params, searchParams }: HomeProps) {
   const home = await getHomeByIdService({ id: params.id })
 
+  async function submitReservation() {
+    'use server'
+
+    await bookReservationService({ homeId: params.id, reservation: { from: new Date(searchParams.start), until: new Date(searchParams.end) } })
+  }
+
   return (
-    <main className='flex flex-col justify-center items-center gap-32 pb-16 px-8'>
+    <main className='flex flex-col justify-center items-center lg:gap-32 gap-20 pb-16 px-8'>
       <section className='flex justify-center items-center flex-wrap lg:gap-x-32 gap-x-20 gap-y-20 pt-16'>
         <Image alt='House Image' src={'/example.png'} width={400} height={400} />
         <hr className='lg:h-80 h-px lg:w-px w-2/3 bg-[#d4d1d1]' />
         <div className='flex justify-center items-start flex-col lg:gap-12 gap-8'>
-          <HomeDetail>
+          <HomeDetail className='xl:w-auto w-72 items-start'>
             <Image src='/pin.svg' alt='pin-icon' width={24} height={24} />
             <h1 className='text-2xl font-semibold'>{formatLocation(home.location)}</h1>
           </HomeDetail>
@@ -39,7 +51,10 @@ export default async function Home({ params }: HomeProps) {
           </HomeDetail>
         </div>
       </section>
-      <section className='flex justify-center items-center w-full lg:gap-x-64 gap-x-24 flex-wrap'>
+      <hr className='h-px lg:w-1/3 w-1/2 bg-[#d4d1d1]' />
+      <section className='flex justify-center items-center w-full lg:gap-32 gap-20 flex-wrap'>
+        <ReservationForm submitReservation={submitReservation} reservations={home.reservations} />
+        <hr className='lg:h-80 h-px lg:w-px w-2/3 bg-[#d4d1d1]' />
         <form className='flex flex-col justify-center items-start gap-12'>
           <h1 className='text-4xl font-medium'>Contate o proprietário</h1>
           <div className='flex flex-col justify-center items-start gap-2 w-full'>
@@ -57,10 +72,6 @@ export default async function Home({ params }: HomeProps) {
           </div>
           <button className='hover:bg-custom-black border border-custom-black px-12 py-1.5 xs:text-lg text-base text-custom-black hover:text-white rounded-xl flex justify-center items-center gap-x-2 active:scale-95 transition-all duration-200'>Enviar</button>
         </form>
-        <div className='h-full self-start pt-32'>
-          <h1 className='text-2xl font-semibold'>Enviando email para:</h1>
-          <h1 className='text-2xl text-center text-custom-gray'>{home.ownerEmail}</h1>
-        </div>
       </section>
     </main>
   )
