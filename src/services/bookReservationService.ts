@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 
 interface BookReservationRequest {
   reservation: Reservation;
-  id: string;
+  homeId: string;
 }
 
 type BookReservationResponse = Promise<void>;
@@ -12,8 +12,8 @@ type BookReservationResponse = Promise<void>;
 export async function bookReservationService(
   request: BookReservationRequest
 ): BookReservationResponse {
-  const { id, reservation } = request;
+  const { homeId, reservation } = request;
   const prismaHomeRepository = new PrismaHomeRepository(prisma);
 
-  await prismaHomeRepository.bookReservation(reservation, id);
+  await prismaHomeRepository.bookReservation(reservation, homeId);
 }
