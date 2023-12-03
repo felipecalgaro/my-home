@@ -15,6 +15,8 @@ model Home {
   registeredAt DateTime      @default(now())
   location     String[]
   reservations Reservation[]
+  rating       Rating        @relation(fields: [ratingId], references: [id])
+  ratingId     String        @unique
   price        Float
   image_url    String
   ownerEmail   String
@@ -26,4 +28,11 @@ model Reservation {
   homeId String
   from   DateTime
   until  DateTime
+}
+
+model Rating {
+  id      String @id @default(uuid())
+  home    Home?
+  amount  Int
+  average Float
 }
