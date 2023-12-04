@@ -1,5 +1,6 @@
 import { Home, Location, Reservation } from "@/entities/Home";
 import { Mapper } from "./Mapper";
+import { Rating } from "@/entities/Home";
 
 interface DatabaseHome {
   id: string;
@@ -9,6 +10,7 @@ interface DatabaseHome {
   price: number;
   image_url: string;
   ownerEmail: string;
+  rating: Rating & { id: string };
 }
 
 const HomeMapper: Mapper<DatabaseHome, Home> = {
@@ -21,6 +23,7 @@ const HomeMapper: Mapper<DatabaseHome, Home> = {
         price: home.price,
         image_url: home.image_url,
         registeredAt: home.registeredAt,
+        rating: home.rating,
       },
       home.id
     );
@@ -42,6 +45,7 @@ const HomeMapper: Mapper<DatabaseHome, Home> = {
       ownerEmail: home.ownerEmail,
       price: home.price,
       registeredAt: home.registeredAt,
+      rating: home.rating,
     };
   },
 };
