@@ -1,11 +1,16 @@
 import { randomUUID } from "crypto";
-import { Rating } from "./Rating";
 
 export type Location = [string, string];
 
 export type Reservation = {
   from: Date;
   until: Date;
+};
+
+export type Rating = {
+  id: string;
+  average: number;
+  amount: number;
 };
 
 interface HomeProps {
@@ -15,6 +20,7 @@ interface HomeProps {
   image_url: string;
   ownerEmail: string;
   registeredAt: Date;
+  rating: Rating;
 }
 
 export class Home {
@@ -33,6 +39,10 @@ export class Home {
 
   get location() {
     return this.props.location;
+  }
+
+  get rating() {
+    return this.props.rating;
   }
 
   get reservations() {

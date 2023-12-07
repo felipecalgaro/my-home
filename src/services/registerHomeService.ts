@@ -1,6 +1,7 @@
 import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeRepository";
 import { Home } from "@/entities/Home";
 import prisma from "@/lib/prisma";
+import { randomUUID } from "crypto";
 
 interface RegisterHomeServiceRequest {
   location: [string, string];
@@ -22,6 +23,11 @@ export async function registerHomeService(
     price: request.price,
     registeredAt: new Date(),
     reservations: [],
+    rating: {
+      amount: 0,
+      average: 0,
+      id: randomUUID(),
+    },
   });
 
   await prismaHomeRepository.registerHome(home);
