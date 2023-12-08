@@ -7,4 +7,9 @@ export interface IHomeRepository {
   getHomeById(id: string): Promise<Home | null>;
   bookReservation(newReservation: Reservation, homeId: string): Promise<void>;
   unregisterHome(id: string): Promise<void>;
+  rateHome(
+    ratingId: string,
+    newAverageRating: number,
+    newQuantity: number
+  ): Promise<void>;
 }
