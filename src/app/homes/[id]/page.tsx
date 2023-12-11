@@ -47,7 +47,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
           </HomeDetail>
           <HomeDetail>
             <Image src='/star.svg' alt='star-icon' width={24} height={24} />
-            <h1 className='text-2xl font-medium'>4.5</h1>
+            <h1 className='text-2xl font-medium'>{home.rating.amount > 0 ? home.rating.average : 'Sem avaliações'}</h1>
           </HomeDetail>
         </div>
       </section>
