@@ -10,6 +10,7 @@ export class PrismaHomeRepository implements IHomeRepository {
     const homes = await this.prisma.home.findMany({
       include: {
         reservations: true,
+        rating: true,
       },
     });
 
@@ -17,7 +18,7 @@ export class PrismaHomeRepository implements IHomeRepository {
   }
 
   async registerHome(home: Home): Promise<void> {
-    const { image_url, ownerEmail, price, location } =
+    const { image_url, ownerEmail, price, location, rating } =
       HomeMapper.toDatabase(home);
 
     await this.prisma.home.create({
@@ -26,6 +27,13 @@ export class PrismaHomeRepository implements IHomeRepository {
         ownerEmail,
         price,
         location,
+        rating: {
+          create: {
+            amount: rating.amount,
+            average: rating.average,
+            id: rating.id,
+          },
+        },
       },
     });
   }
@@ -37,6 +45,7 @@ export class PrismaHomeRepository implements IHomeRepository {
       },
       include: {
         reservations: true,
+        rating: true,
       },
     });
 
@@ -56,6 +65,22 @@ export class PrismaHomeRepository implements IHomeRepository {
         from: newReservation.from,
         until: newReservation.until,
         homeId: homeId,
+      },
+    });
+  }
+
+  async rateHome(
+    ratingId: string,
+    newAverageRating: number,
+    newQuantity: number
+  ): Promise<void> {
+    await this.prisma.rating.update({
+      data: {
+        amount: newQuantity,
+        average: newAverageRating,
+      },
+      where: {
+        id: ratingId,
       },
     });
   }
