@@ -43,7 +43,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
           </HomeDetail>
           <HomeDetail>
             <Image src='/tags.svg' alt='tags-icon' width={24} height={24} />
-            <h1 className='text-lg text-[#666666]'><span className='font-semibold text-black'>{formatPrice(home.price)}</span> por noite</h1>
+            <h1 className='text-lg text-[#666666]'><span className='font-semibold text-black'>{formatPrice(home.price)}</span> por dia</h1>
           </HomeDetail>
           <HomeDetail>
             <Image src='/star.svg' alt='star-icon' width={24} height={24} />
