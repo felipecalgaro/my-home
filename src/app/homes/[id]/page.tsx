@@ -30,7 +30,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
   return (
     <main className='flex flex-col justify-center items-center lg:gap-32 gap-20 pb-16 px-8'>
       <section className='flex justify-center items-center flex-wrap lg:gap-x-32 gap-x-20 gap-y-20 pt-16'>
-        <Image alt='House Image' src={'/example.png'} width={400} height={400} />
+        <Image alt='House Image' src={home.image_url} width={400} height={400} />
         <hr className='lg:h-80 h-px lg:w-px w-2/3 bg-[#d4d1d1]' />
         <div className='flex justify-center items-start flex-col lg:gap-12 gap-8'>
           <HomeDetail className='xl:w-auto w-72 items-start'>

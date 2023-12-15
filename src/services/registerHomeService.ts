@@ -6,7 +6,7 @@ import { randomUUID } from "crypto";
 interface RegisterHomeServiceRequest {
   location: [string, string];
   price: number;
-  image_url?: string;
+  image_url: string;
   ownerEmail: string;
 }
 
@@ -17,7 +17,7 @@ export async function registerHomeService(
 ): RegisterHomeServiceResponse {
   const prismaHomeRepository = new PrismaHomeRepository(prisma);
   const home = new Home({
-    image_url: request.image_url ?? "https://fakeurl.com.br",
+    image_url: request.image_url,
     location: request.location,
     ownerEmail: request.ownerEmail,
     price: request.price,
