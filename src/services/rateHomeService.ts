@@ -5,7 +5,7 @@ interface RateHomeServiceRequest {
   ratingId: string;
   newRating: number;
   currentAverageRating: number;
-  quantityOfRatings: number;
+  amountOfRatings: number;
 }
 
 type RateHomeServiceResponse = Promise<void>;
@@ -17,15 +17,15 @@ export async function rateHomeService(
 
   const newAverageRating = Number(
     (
-      (request.quantityOfRatings * request.currentAverageRating +
+      (request.amountOfRatings * request.currentAverageRating +
         request.newRating) /
-      (request.quantityOfRatings + 1)
+      (request.amountOfRatings + 1)
     ).toFixed(2)
   );
 
   await prismaHomeRepository.rateHome(
     request.ratingId,
     newAverageRating,
-    request.quantityOfRatings + 1
+    request.amountOfRatings + 1
   );
 }

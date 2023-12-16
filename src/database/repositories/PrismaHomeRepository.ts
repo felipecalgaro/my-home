@@ -72,11 +72,11 @@ export class PrismaHomeRepository implements IHomeRepository {
   async rateHome(
     ratingId: string,
     newAverageRating: number,
-    newQuantity: number
+    newAmount: number
   ): Promise<void> {
     await this.prisma.rating.update({
       data: {
-        amount: newQuantity,
+        amount: newAmount,
         average: newAverageRating,
       },
       where: {

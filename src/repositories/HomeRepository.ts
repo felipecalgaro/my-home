@@ -10,6 +10,6 @@ export interface IHomeRepository {
   rateHome(
     ratingId: string,
     newAverageRating: number,
-    newQuantity: number
+    newAmount: number
   ): Promise<void>;
 }
