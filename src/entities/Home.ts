@@ -55,12 +55,13 @@ export class Home {
 
     const currentDay = getDateAtMidnight(new Date());
 
+    // returns false if currentDay is within the reservation interval
     const checkAvailability = (
       reservationStartDate: Date,
       reservationEndDate: Date
     ) =>
-      getDateAtMidnight(reservationStartDate) > currentDay ||
-      getDateAtMidnight(reservationEndDate) < currentDay;
+      getDateAtMidnight(reservationStartDate) <= currentDay &&
+      getDateAtMidnight(reservationEndDate) >= currentDay;
 
     const isItAvailableToday = !this.props.reservations?.find((reservation) =>
       checkAvailability(reservation.from, reservation.until)
