@@ -1,6 +1,5 @@
 import { ImageDropzone } from '@/components/ImageDropzone';
 import { Input } from '@/components/Input';
-import { PriceInputButtons } from '@/components/PriceInputButtons';
 import { registerHomeService } from '@/services/registerHomeService';
 
 type RegisterFormData = {
@@ -31,9 +30,7 @@ export default async function Register() {
           <Input id='state' name='state' placeholder='Ex.: "Bahia"' label='Estado' />
         </div>
         <div className='flex justify-center items-end w-full'>
-          <Input id='price' label='Preço da diária' name='price' placeholder='Digite o preço da diária' className='rounded-r-none price-input border-r-0' type='number'>
-            <PriceInputButtons />
-          </Input>
+          <Input id='price' label='Preço da diária' name='price' step='10' placeholder='Digite o preço da diária (R$)' className='price-input' type='number' />
         </div>
         <ImageDropzone handleSubmit={handleSubmit} />
       </form>
