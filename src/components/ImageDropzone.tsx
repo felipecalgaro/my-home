@@ -1,6 +1,7 @@
 'use client'
 
 import { useEdgeStore } from '@/lib/edgestore'
+import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { twMerge } from 'tailwind-merge'
@@ -13,11 +14,13 @@ export function ImageDropzone({ handleSubmit }: ImageDropzoneProps) {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null)
   const { edgestore } = useEdgeStore()
   const [progress, setProgress] = useState(0)
+  const router = useRouter()
 
   async function handleClick(formData: FormData) {
     if (acceptedFiles[0]) {
       const res = await edgestore.myPublicImages.upload({ file: acceptedFiles[0], onProgressChange: (progress) => setProgress(progress) })
       await handleSubmit(formData, res.url)
+      router.push('/homes')
     }
   }
 
