@@ -18,26 +18,28 @@ export function PriceDropdown() {
   function updateSearchParams(e: MouseEvent, range: Omit<PriceRangeOption, 'text'>) {
     e.preventDefault()
     const newParams = new URLSearchParams(params.toString())
-    const { max, min } = range
-    if (!max && !min) {
-      newParams.delete('max')
-      newParams.delete('min')
-      router.push(`?${newParams.toString()}`, { scroll: false })
-      return
-    } else if (!max && min) {
-      newParams.delete('max')
-      newParams.set('min', min)
-      router.push(`?${newParams.toString()}`, { scroll: false })
-      return
-    } else if (!min && max) {
-      newParams.delete('min')
-      newParams.set('max', max)
-      router.push(`?${newParams.toString()}`, { scroll: false })
-      return
+    const searchParamsOptions = {
+      'max': () => {
+        newParams.set('max', range.max!)
+        router.push(`?${newParams.toString()}`, { scroll: false })
+      },
+      'min': () => {
+        newParams.set('min', range.min!)
+        router.push(`?${newParams.toString()}`, { scroll: false })
+      }
     }
-    newParams.set('max', max!)
-    newParams.set('min', min!)
+
+    const validSearchParams = (Object.keys(range) as (keyof typeof range)[]).filter(key => range[key] !== undefined) // check which search params to apply to the URL (the ones that are not undefined)
+
+    newParams.delete('max')
+    newParams.delete('min')
     router.push(`?${newParams.toString()}`, { scroll: false })
+
+    if (validSearchParams.length > 0) {
+      validSearchParams.forEach(param => {
+        searchParamsOptions[param]()
+      })
+    }
   }
 
   const priceOptions: PriceRangeOption[] = [
