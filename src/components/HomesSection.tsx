@@ -5,7 +5,9 @@ import { PaginationButton } from './PaginationButton';
 
 interface HomesSectionProps {
   filter: {
-    location: string | null
+    location: string | null,
+    minPrice: number | null,
+    maxPrice: number | null
   }
 }
 
@@ -16,16 +18,28 @@ export async function HomesSection({ filter }: HomesSectionProps) {
     return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") // São Paulo => sao paulo
   }
 
-  function filterByLocation(homeLocation: Location) {
-    if (filter.location) {
-      return formatStringToFilter(homeLocation[0]).startsWith(formatStringToFilter(filter.location)) || formatStringToFilter(homeLocation[1]).startsWith(formatStringToFilter(filter.location))
+  function getFilterMethods(homeLocation: Location, homePrice: number) {
+    return {
+      location() {
+        return formatStringToFilter(homeLocation[0]).startsWith(formatStringToFilter(filter.location!)) || formatStringToFilter(homeLocation[1]).startsWith(formatStringToFilter(filter.location!))
+      },
+      minPrice() {
+        return homePrice > filter.minPrice!
+      },
+      maxPrice() {
+        return homePrice < filter.maxPrice!
+      }
     }
-
-    return true
   }
 
+  const validFilters = (Object.keys(filter) as (keyof typeof filter)[]).filter(filterKey => filter[filterKey] !== null) // check which filters should be applied (the ones that are not null)
+
   const filteredHomes = homes.filter(home => {
-    return filterByLocation(home.location)
+    const filterMethods = getFilterMethods(home.location, home.price)
+
+    return validFilters.map(filter => {
+      return filterMethods[filter]()
+    }).every(res => res === true)
   })
 
   return (
