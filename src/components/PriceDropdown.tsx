@@ -1,5 +1,6 @@
 'use client'
 
+import { ObjectKeys } from '@/types'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { MouseEvent, useState } from 'react'
 
@@ -29,7 +30,7 @@ export function PriceDropdown() {
       }
     }
 
-    const validSearchParams = (Object.keys(range) as (keyof typeof range)[]).filter(key => range[key] !== undefined) // check which search params to apply to the URL (the ones that are not undefined)
+    const validSearchParams = (Object.keys(range) as ObjectKeys<typeof range>).filter(key => range[key] !== undefined) // check which search params to apply to the URL (the ones that are not undefined)
 
     newParams.delete('max')
     newParams.delete('min')

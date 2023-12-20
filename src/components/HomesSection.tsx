@@ -2,6 +2,7 @@ import { getHomesService } from '@/services/getHomesService';
 import { Card } from './Card';
 import { Location } from '@/entities/Home';
 import { PaginationButton } from './PaginationButton';
+import { ObjectKeys } from '@/types';
 
 interface HomesSectionProps {
   filter: {
@@ -32,7 +33,7 @@ export async function HomesSection({ filter }: HomesSectionProps) {
     }
   }
 
-  const validFilters = (Object.keys(filter) as (keyof typeof filter)[]).filter(filterKey => filter[filterKey] !== null) // check which filters should be applied (the ones that are not null)
+  const validFilters = (Object.keys(filter) as ObjectKeys<typeof filter>).filter(filterKey => filter[filterKey] !== null) // check which filters should be applied (the ones that are not null)
 
   const filteredHomes = homes.filter(home => {
     const filterMethods = getFilterMethods(home.location, home.price)
