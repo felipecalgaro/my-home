@@ -1,6 +1,7 @@
 import { HomesSection } from '@/components/HomesSection';
 import { IconLabel } from '@/components/IconLabel';
 import { LocationInput } from '@/components/LocationInput';
+import { PriceDropdown } from '@/components/PriceDropdown';
 import Image from 'next/image';
 
 export type SearchParams = {
@@ -12,7 +13,7 @@ interface HomesProps {
 }
 
 export default function Homes({ searchParams }: HomesProps) {
-  const { location } = searchParams
+  const { location, min, max } = searchParams
 
   return (
     <main className='px-4'>
@@ -23,9 +24,14 @@ export default function Homes({ searchParams }: HomesProps) {
           </IconLabel>
           <LocationInput placeholder='Ex.: "Salvador" ou "Bahia"' name="location" id="location" />
         </section>
+        <section className='flex justify-center items-center'>
+          <PriceDropdown />
+        </section>
       </form>
       <HomesSection filter={{
-        location: location || null
+        location: location || null,
+        minPrice: Number(min) || null,
+        maxPrice: Number(max) || null
       }} />
     </main>
   )
