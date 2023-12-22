@@ -10,7 +10,7 @@ interface RegisterHomeServiceRequest {
   ownerEmail: string;
 }
 
-type RegisterHomeServiceResponse = Promise<Home>;
+type RegisterHomeServiceResponse = Promise<void>;
 
 export async function registerHomeService(
   request: RegisterHomeServiceRequest
@@ -31,5 +31,4 @@ export async function registerHomeService(
   });
 
   await prismaHomeRepository.registerHome(home);
-  return home;
 }
