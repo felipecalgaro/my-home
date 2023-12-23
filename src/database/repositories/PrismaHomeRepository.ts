@@ -6,12 +6,14 @@ import HomeMapper from "../mappers/HomeMapper";
 export class PrismaHomeRepository implements IHomeRepository {
   constructor(private prisma: PrismaClient) {}
 
-  async getHomes(): Promise<Home[]> {
+  async getHomes(skip: number, take: number): Promise<Home[]> {
     const homes = await this.prisma.home.findMany({
       include: {
         reservations: true,
         rating: true,
       },
+      skip,
+      take,
     });
 
     return homes.map(HomeMapper.toDomain);
