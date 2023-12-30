@@ -13,7 +13,7 @@ interface InputProps {
 export function Input({ id, name, type, className, placeholder, label, step }: InputProps) {
   return (
     <div className='flex items-start justify-center flex-col w-full'>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
         type={type ?? 'text'}
         step={step}
