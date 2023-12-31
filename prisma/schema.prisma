@@ -18,6 +18,7 @@ model Home {
   rating       Rating        @relation(fields: [ratingId], references: [id])
   ratingId     String        @unique
   price        Float
+  description  String
   image_url    String
   ownerEmail   String
 }
