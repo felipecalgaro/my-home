@@ -8,6 +8,7 @@ interface RegisterHomeServiceRequest {
   price: number;
   image_url: string;
   ownerEmail: string;
+  description: string;
 }
 
 type RegisterHomeServiceResponse = Promise<void>;
@@ -28,6 +29,7 @@ export async function registerHomeService(
       average: 0,
       id: randomUUID(),
     },
+    description: request.description,
   });
 
   await prismaHomeRepository.registerHome(home);

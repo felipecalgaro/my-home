@@ -11,6 +11,7 @@ interface DatabaseHome {
   image_url: string;
   ownerEmail: string;
   rating: Rating & { id: string };
+  description: string;
 }
 
 const HomeMapper: Mapper<DatabaseHome, Home> = {
@@ -24,6 +25,7 @@ const HomeMapper: Mapper<DatabaseHome, Home> = {
         image_url: home.image_url,
         registeredAt: home.registeredAt,
         rating: home.rating,
+        description: home.description,
       },
       home.id
     );
@@ -46,6 +48,7 @@ const HomeMapper: Mapper<DatabaseHome, Home> = {
       price: home.price,
       registeredAt: home.registeredAt,
       rating: home.rating,
+      description: home.description,
     };
   },
 };

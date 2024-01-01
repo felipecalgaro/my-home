@@ -21,6 +21,7 @@ interface HomeProps {
   ownerEmail: string;
   registeredAt: Date;
   rating: Rating;
+  description: string
 }
 
 export class Home {
@@ -84,5 +85,9 @@ export class Home {
 
   get registeredAt() {
     return this.props.registeredAt;
+  }
+
+  get description() {
+    return this.props.description
   }
 }
