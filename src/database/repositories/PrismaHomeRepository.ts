@@ -20,11 +20,12 @@ export class PrismaHomeRepository implements IHomeRepository {
   }
 
   async registerHome(home: Home): Promise<void> {
-    const { image_url, ownerEmail, price, location, rating } =
+    const { image_url, ownerEmail, price, location, rating, description } =
       HomeMapper.toDatabase(home);
 
     await this.prisma.home.create({
       data: {
+        description,
         image_url,
         ownerEmail,
         price,
