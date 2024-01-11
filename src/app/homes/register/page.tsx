@@ -31,7 +31,7 @@ export default async function Register() {
           <Input id='state' name='state' placeholder='Ex.: "Bahia"' label='Estado' />
         </div>
         <div className='flex justify-center items-end w-full'>
-          <Input id='price' label='Preço da diária' name='price' step='10' placeholder='Digite o preço da diária (R$)' className='price-input' type='number' />
+          <Input id='price' label='Preço da diária' name='price' placeholder='Digite o preço da diária (R$)' className='price-input' type='number' />
         </div>
         <div className='flex items-start justify-center flex-col w-full'>
           <label htmlFor='description'>Descrição</label>
