@@ -2,15 +2,19 @@ import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeReposito
 import { Home } from "@/entities/Home";
 import prisma from "@/lib/prisma";
 
+interface GetHomesServiceRequest {
+  skip: number;
+  take: number;
+}
+
 type GetHomesServiceResponse = Promise<Home[]>;
 
 export async function getHomesService(
-  skip: number,
-  take: number
+  request: GetHomesServiceRequest
 ): GetHomesServiceResponse {
   const prismaHomeRepository = new PrismaHomeRepository(prisma);
 
-  const homes = await prismaHomeRepository.getHomes(skip, take);
+  const homes = await prismaHomeRepository.getHomes(request.skip, request.take);
 
   return homes;
 }
