@@ -13,7 +13,10 @@ interface HomesProps {
 }
 
 export default function Homes({ searchParams }: HomesProps) {
-  const { location, min, max } = searchParams
+  const { location, min, max, skip } = searchParams
+
+  const homesPerPage = 2
+  const currentSkip = Number(skip) || 0
 
   return (
     <main className='px-4'>
@@ -28,11 +31,15 @@ export default function Homes({ searchParams }: HomesProps) {
           <PriceDropdown />
         </section>
       </form>
-      <HomesSection filter={{
-        location: location || null,
-        minPrice: Number(min) || null,
-        maxPrice: Number(max) || null
-      }} />
+      <HomesSection
+        filter={{
+          location: location || null,
+          minPrice: Number(min) || null,
+          maxPrice: Number(max) || null,
+        }}
+        currentSkip={currentSkip}
+        homesPerPage={homesPerPage}
+      />
     </main>
   )
 }
