@@ -25,9 +25,9 @@ export function PaginationButton({ iconUrl, navigationType, skip, currentSkip }:
         newParams.set('skip', newSkip)
         router.push(`?${newParams.toString()}`, { scroll: false })
       }}
-      className='rounded-full border border-custom-black bg-transparent p-4 aspect-square'
+      className='rounded-full border border-custom-black bg-transparent p-3 aspect-square'
     >
-      <Image src={iconUrl} alt='Icon' width={32} height={32} />
+      <Image src={iconUrl} alt='Icon' width={24} height={24} />
     </button>
   )
 }

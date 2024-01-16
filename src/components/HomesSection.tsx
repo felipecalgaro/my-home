@@ -49,7 +49,7 @@ export async function HomesSection({ filter, homesPerPage, currentSkip }: HomesS
     <>
       {filteredHomes.length > 0 ? (
         <>
-          <section className='py-20 md:px-16 px-4 px flex justify-center items-start flex-wrap gap-x-10 gap-y-20'>
+          <section className='pt-20 pb-12 md:px-16 px-4 px flex justify-center items-start flex-wrap gap-x-10 gap-y-20 min-h-[500px]'>
             {filteredHomes.map((home) => (
               <Card id={home.id} isAvailable={home.isAvailable} imageUrl={home.image_url} location={home.location} price={home.price} key={home.id} />
             ))}
@@ -67,7 +67,9 @@ export async function HomesSection({ filter, homesPerPage, currentSkip }: HomesS
         </>
       ) : (
         <>
-          <h1 className='text-center mt-60 mb-[279px] text-xl'>No homes could be found.</h1>
+          <div className='h-[515px] flex justify-center items-center'>
+            <h1 className='text-center text-xl'>No homes could be found.</h1>
+          </div>
           <section className='flex justify-center items-center mb-10 gap-x-8'>
             <PaginationButton currentSkip={currentSkip} navigationType='PREVIOUS' skip={homesPerPage} iconUrl='/previous.svg' />
           </section>
