@@ -70,9 +70,11 @@ export async function HomesSection({ filter, homesPerPage, currentSkip }: HomesS
           <div className='h-[515px] flex justify-center items-center'>
             <h1 className='text-center text-xl'>No homes could be found.</h1>
           </div>
-          <section className='flex justify-center items-center mb-10 gap-x-8'>
-            <PaginationButton currentSkip={currentSkip} navigationType='PREVIOUS' skip={homesPerPage} iconUrl='/previous.svg' />
-          </section>
+          {currentSkip > 0 && (
+            <section className='flex justify-center items-center mb-10 gap-x-8'>
+              <PaginationButton currentSkip={currentSkip} navigationType='PREVIOUS' skip={homesPerPage} iconUrl='/previous.svg' />
+            </section>
+          )}
         </>
       )}
     </>
