@@ -1,8 +1,8 @@
 import { getHomesService } from '@/services/getHomesService';
 import { Card } from './Card';
 import { Location } from '@/entities/Home';
-import { PaginationButton } from './PaginationButton';
 import { ObjectKeys } from '@/types';
+import { PaginationButtonSection } from './PaginationButtonSection';
 
 interface HomesSectionProps {
   filter: {
@@ -55,14 +55,9 @@ export async function HomesSection({ filter, homesPerPage, currentSkip }: HomesS
             ))}
           </section>
           {currentSkip === 0 ? (
-            <section className='flex justify-center items-center mb-10 gap-x-8'>
-              <PaginationButton currentSkip={currentSkip} navigationType='NEXT' skip={homesPerPage} iconUrl='/next.svg' />
-            </section>
+            <PaginationButtonSection currentSkip={currentSkip} homesPerPage={homesPerPage} next />
           ) : (
-            <section className='flex justify-center items-center mb-10 gap-x-8'>
-              <PaginationButton currentSkip={currentSkip} navigationType='PREVIOUS' skip={homesPerPage} iconUrl='/previous.svg' />
-              <PaginationButton currentSkip={currentSkip} navigationType='NEXT' skip={homesPerPage} iconUrl='/next.svg' />
-            </section>
+            <PaginationButtonSection currentSkip={currentSkip} homesPerPage={homesPerPage} next previous />
           )}
         </>
       ) : (
@@ -71,9 +66,7 @@ export async function HomesSection({ filter, homesPerPage, currentSkip }: HomesS
             <h1 className='text-center text-xl'>No homes could be found.</h1>
           </div>
           {currentSkip > 0 && (
-            <section className='flex justify-center items-center mb-10 gap-x-8'>
-              <PaginationButton currentSkip={currentSkip} navigationType='PREVIOUS' skip={homesPerPage} iconUrl='/previous.svg' />
-            </section>
+            <PaginationButtonSection currentSkip={currentSkip} homesPerPage={homesPerPage} previous />
           )}
         </>
       )}
