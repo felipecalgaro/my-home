@@ -1,7 +1,10 @@
+"use server";
+
 import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeRepository";
 import { Home } from "@/entities/Home";
 import prisma from "@/lib/prisma";
 import { randomUUID } from "crypto";
+import { revalidatePath } from "next/cache";
 
 interface RegisterHomeServiceRequest {
   location: [string, string];
@@ -33,4 +36,6 @@ export async function registerHomeService(
   });
 
   await prismaHomeRepository.registerHome(home);
+
+  revalidatePath("/homes");
 }
