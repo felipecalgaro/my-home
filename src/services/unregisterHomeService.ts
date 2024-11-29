@@ -1,3 +1,5 @@
+"use server";
+
 import { PrismaHomeRepository } from "@/database/repositories/PrismaHomeRepository";
 import prisma from "@/lib/prisma";
 
