@@ -23,16 +23,16 @@ export default function Homes({ searchParams }: HomesProps) {
     <main className='px-4'>
       <div className='flex justify-evenly items-center flex-wrap gap-x-12 gap-y-10 mt-10'>
         <section className='flex justify-center items-center'>
-          <IconLabel htmlFor='location'>
+          <IconLabel htmlFor='location' hideOnLowScreenSize>
             <Image src='/pin.svg' alt='Pin Icon' width={20} height={20} />
           </IconLabel>
-          <LocationInput placeholder='Ex.: "Salvador" ou "Bahia"' name="location" id="location" />
+          <LocationInput placeholder='e.g. "Los Angeles" or "California"' name="location" id="location" />
         </section>
         <section className='flex justify-center items-center'>
           <PriceDropdown />
         </section>
         <Link href='/homes/register' className="rounded-lg bg-custom-black text-white active:scale-95 transition-all duration-200 items-center justify-center py-2 px-8">
-          Criar anúncio
+          Create ad
         </Link>
       </div>
       <HomesSection

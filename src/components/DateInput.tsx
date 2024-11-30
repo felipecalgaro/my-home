@@ -26,7 +26,7 @@ export function DateInput({ className, placeholderText, id, name, reservations }
   return (
     <DatePicker
       className={
-        twMerge('bg-[#D9D9D9] border-[#c8c8c8] focus:bg-[#e1e1e1] border rounded-r-3xl drop-shadow-sm xs:text-xl text-base xs:pl-4 pl-2 placeholder:text-left h-12 xs:w-56 w-28 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray', className)
+        twMerge('bg-[#D9D9D9] border-[#c8c8c8] focus:bg-[#e1e1e1] border rounded-r-3xl drop-shadow-sm xs:text-xl text-base xs:pl-4 pl-2 placeholder:text-left h-12 xs:w-56 w-40 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray', className)
       }
       selected={startDate}
       onChange={(dates) => {
