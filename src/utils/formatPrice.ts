@@ -1,7 +1,7 @@
 export default function formatPrice(price: number) {
-  return new Intl.NumberFormat("pt-BR", {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "BRL",
+    currency: "USD",
     maximumFractionDigits: 2,
   }).format(price);
 }

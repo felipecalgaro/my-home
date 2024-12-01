@@ -45,37 +45,37 @@ export function PriceDropdown() {
 
   const priceOptions: PriceRangeOption[] = [
     {
-      text: 'Qualquer'
+      text: 'Any'
     },
     {
       max: '100',
-      text: 'Menos de R$ 100'
+      text: 'Less than $100'
     },
     {
       min: '100',
       max: '200',
-      text: 'R$ 100 a R$ 200'
+      text: '$100 - $200'
     },
     {
       min: '200',
       max: '400',
-      text: 'R$ 200 a R$ 400'
+      text: '$200 - $400'
     },
     {
       min: '400',
       max: '700',
-      text: 'R$ 400 a R$ 700'
+      text: '$400 - $700'
     },
     {
       min: '700',
-      text: 'Mais de R$ 700'
+      text: 'More than $700'
     }
   ]
 
   return (
     <div className='relative'>
       <button onClick={() => setIsOpen(prev => !prev)} className="w-52 text-custom-black border border-custom-black focus:ring-1 focus:outline-none focus:ring-custom-gray rounded-lg text-base px-5 py-2.5 text-center inline-flex items-center justify-center" type="button">
-        {selectedPrice || 'Escolha por preço'}
+        {selectedPrice || 'Price range'}
         <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
         </svg>

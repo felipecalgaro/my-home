@@ -1,6 +1,7 @@
 'use client'
 
 import { useEdgeStore } from '@/lib/edgestore'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
@@ -48,10 +49,10 @@ export function ImageDropzone({ handleSubmit }: ImageDropzoneProps) {
         <div className={twMerge('h-3/4 w-3/4 flex justify-center items-center cursor-pointer', !preview ? 'border-dashed border-2 border-slate-300 rounded-xl' : null)} {...getRootProps()}>
           <input name='image' {...getInputProps()} />
           {
-            !preview && <p className='mx-16 text-center font-bold text-xl'>Compartilhe uma foto do seu espaço</p>
+            !preview && <p className='mx-16 text-center font-bold text-xl'>Upload a photo of your place</p>
           }
           {preview && (
-            <img alt='image preview' src={preview as string} style={{ aspectRatio: '1/1', maxHeight: '320px' }} />
+            <Image alt='image preview' src={preview as string} style={{ aspectRatio: '1/1', maxHeight: '320px' }} width={320} height={320} />
           )}
         </div>
         {(preview && progress !== 0 && progress !== 100) && (
@@ -61,7 +62,7 @@ export function ImageDropzone({ handleSubmit }: ImageDropzoneProps) {
         )}
       </div>
       <button type='submit' formAction={handleClick} className='bg-custom-black px-14 py-2 xs:text-lg text-base text-white rounded-xl flex justify-center items-center gap-x-2 active:scale-95 transition-transform duration-200 cursor-pointer'>
-        Criar
+        Publish
       </button >
     </>
   )

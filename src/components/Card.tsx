@@ -16,8 +16,8 @@ export function Card({ imageUrl, location, price, id, isAvailable }: CardProps) 
       <Image src={imageUrl} alt='House image' width={240} height={240} style={{ borderRadius: '8px' }} />
       <div className='flex flex-col gap-y-1 w-60'>
         <h1 className='font-semibold text-lg break-words'>{`${location[0]}, ${location[1]}`}</h1>
-        <p className='text-[#666666] text-[15px]'>{isAvailable ? 'Disponível' : 'Não disponível'}</p>
-        <p className='text-[#666666] text-[15px]'><span className='font-semibold text-black'>{formatPrice(price)}</span> por dia</p>
+        <p className='text-[#666666] text-[15px]'>{isAvailable ? 'Available' : 'Unavailable'}</p>
+        <p className='text-[#666666] text-[15px]'><span className='font-semibold text-black'>{formatPrice(price)}</span> per day</p>
       </div>
     </Link>
   )

@@ -25,32 +25,32 @@ export default async function Rate({ params }: RateProps) {
 
   const ratingOptions = [
     {
-      text: 'Péssima',
+      text: 'Terrible',
       icon: '😡'
     },
     {
-      text: 'Ruim',
+      text: 'Bad',
       icon: '☹️'
     },
     {
-      text: 'Aceitável',
+      text: 'Acceptable',
       icon: '🫤'
     },
     {
-      text: 'Boa',
+      text: 'Good',
       icon: '🙂'
     },
     {
-      text: 'Excelente',
+      text: 'Excellent',
       icon: '🤩'
     },
   ]
 
   return (
     <div className='flex justify-center items-center flex-col xs:px-20 px-10 gap-16 pt-12 pb-20'>
-      <h1 className='text-3xl font-medium text-center'>Avalie o lugar que você reservou</h1>
+      <h1 className='text-3xl font-medium text-center'>Rate the place you just visited</h1>
       <Image alt='home' src={home.image_url} width={320} height={320} />
-      <h3 className='text-xl font-medium text-center'>Como foi a sua estadia?</h3>
+      <h3 className='text-xl font-medium text-center'>How was your stay?</h3>
       <form className='flex justify-center items-center xs:gap-x-16 gap-x-8 flex-wrap gap-y-8'>
         {ratingOptions.map((option, index) => (
           <RatingOption

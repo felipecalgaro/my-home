@@ -23,19 +23,19 @@ export default async function Register() {
 
   return (
     <div className='flex justify-center items-center flex-col xs:px-20 px-2 gap-16 pt-12 pb-20'>
-      <h1 className='text-4xl font-medium'>Criar novo anúncio</h1>
+      <h1 className='text-4xl font-medium'>Create new ad</h1>
       <form className='flex justify-center items-start flex-col gap-12'>
-        <Input id='email' name='email' type='email' placeholder='Digite o seu email' label='Email' />
+        <Input id='email' name='email' type='email' placeholder='Enter your e-mail' label='Email' />
         <div className='flex justify-center items-center gap-8 sm:flex-nowrap flex-wrap'>
-          <Input id='city' name='city' placeholder='Ex.: "Salvador"' label='Cidade' />
-          <Input id='state' name='state' placeholder='Ex.: "Bahia"' label='Estado' />
+          <Input id='city' name='city' placeholder='e.g. "Los Angeles"' label='City' />
+          <Input id='state' name='state' placeholder='e.g. "California"' label='State' />
         </div>
         <div className='flex justify-center items-end w-full'>
-          <Input id='price' label='Preço da diária' name='price' placeholder='Digite o preço da diária (R$)' className='price-input' type='number' />
+          <Input id='price' label='Daily price' name='price' placeholder='Enter the daily price ($)' className='price-input' type='number' />
         </div>
         <div className='flex items-start justify-center flex-col w-full'>
-          <label htmlFor='description'>Descrição</label>
-          <textarea name='description' id='description' rows={8} placeholder='Descreva o local' className='bg-[#D9D9D9] focus:bg-[#e1e1e1] border-[#c8c8c8] border drop-shadow-sm rounded-xl xs:text-xl text-lg p-3 xs:w-full w-64 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray'></textarea>
+          <label htmlFor='description'>Description</label>
+          <textarea name='description' id='description' rows={8} placeholder='Describe the location' className='bg-[#D9D9D9] focus:bg-[#e1e1e1] border-[#c8c8c8] border drop-shadow-sm rounded-xl xs:text-xl text-lg p-3 xs:w-full w-64 focus:outline-none focus:ring-1 focus:ring-slate-500 font-extralight xs:placeholder:text-lg placeholder:text-base placeholder:text-custom-gray'></textarea>
         </div>
         <ImageDropzone handleSubmit={handleSubmit} />
       </form>
